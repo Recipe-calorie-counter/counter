@@ -1,13 +1,27 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Component from "./components/component";
+import {Route} from "react-router-dom";
+import Converter from "./components/Converter";
+import CountRecipe from "./components/CountRecipe";
+import Home from "./components/HomePage";
 
 function App() {
   return (
     <div className="App">
-      <p>Hello world</p>
-      <Component />
+
+
+      <Route exact path="/">
+        <Home />
+      </Route>
+
+      <Route path="/converter">
+        <Converter />
+      </Route>
+
+      <Route path="/countRecipe">
+          <CountRecipe />
+      </Route>
     </div>
   );
 }
