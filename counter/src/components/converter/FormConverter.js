@@ -1,0 +1,23 @@
+import React from "react";
+
+const FormConverter = () => {
+    return (            
+            <form onSubmit={this.props.Submit}>
+                <label>
+                    Food:
+                    <input type ="text" name="food"/> 
+                </label> 
+                <label>
+                    Weight(g):
+                    <input type ="text" name="Weight"/> 
+                </label> 
+                <label>
+                    Kkal:
+                    <input type ="text" name="Kkal"/> 
+                </label> 
+                <button type="submit">Рассчитать</button>
+            </form> 
+    );
+};
+
+export default FormConverter;
