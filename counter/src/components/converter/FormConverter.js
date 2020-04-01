@@ -15,7 +15,7 @@ const FormConverter = () => {
                     Kkal:
                     <input type ="text" name="Kkal"/> 
                 </label> 
-                <button type="submit">Рассчитать</button>
+                <button type="submit">Calculate</button>
             </form> 
     );
 };

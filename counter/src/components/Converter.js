@@ -14,7 +14,7 @@ const StyledDiv = styled.div `
 const Converter = () => {
 
     function handleSubmit(e) {
-        alert('Хватит жрать!');
+        alert('Stop eating!');
         e.preventDefault();
       }
 
@@ -37,7 +37,7 @@ const Converter = () => {
                     Kkal:
                     <input type ="text" name="Kkal"/> 
                 </label> 
-                <button type="submit">Рассчитать</button>
+                <button type="submit">Calculate</button>
             </form> 
             
         </div>
