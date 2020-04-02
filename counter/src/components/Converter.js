@@ -3,7 +3,7 @@ import {
     NavLink
 } from "react-router-dom";
 import styled from "styled-components";
-//import FormConverter from './converter/FormConverter';
+import FormConverter from './converter/FormConverter';
 
 const StyledDiv = styled.div `
     background-color: #99ffff;
@@ -24,21 +24,7 @@ const Converter = () => {
                 <p className = "hello"> Hello </p> 
             </StyledDiv>
             <NavLink to = "/" > Back </NavLink> 
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Food:
-                    <input type ="text" name="food"/> 
-                </label> 
-                <label>
-                    Weight(g):
-                    <input type ="text" name="Weight"/> 
-                </label> 
-                <label>
-                    Kkal:
-                    <input type ="text" name="Kkal"/> 
-                </label> 
-                <button type="submit">Calculate</button>
-            </form> 
+            <FormConverter calculate={handleSubmit} />
             
         </div>
     );

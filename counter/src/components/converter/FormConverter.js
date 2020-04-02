@@ -1,8 +1,9 @@
 import React from "react";
 
-const FormConverter = () => {
+const FormConverter = (props) => {
+
     return (            
-            <form onSubmit={this.props.Submit}>
+            <form onSubmit={props.calculate}>
                 <label>
                     Food:
                     <input type ="text" name="food"/> 
