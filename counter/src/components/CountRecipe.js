@@ -12,7 +12,7 @@ const CountRecipe = () => {
         carbs: 0,
         protein: 0,
         weight: 0
-    },]);
+    }]);
     const [recipe, setRecipe] = useState({
         ckalTotal: 0,
         fat: 0,
@@ -23,10 +23,23 @@ const CountRecipe = () => {
     const { register, handleSubmit, watch, errors, reset } = useForm();
 
     const onSubmit = data => {
-        console.log(data);
         var ol = Object.keys(ingredients);
-        console.log(ol.length);
-        console.log(recipe);
+        let ck = 0;
+        let ft = 0;
+        let cr = 0;
+        let pr = 0;
+        for (let i=0; i< ol.length; i++) {
+            ck += Number(data[`ckal100-${i}`])*Number(data[`weight-${i}`])/100;
+            ft += Number(data[`fat-${i}`])*Number(data[`weight-${i}`])/100;
+            cr += Number(data[`carbs-${i}`])*Number(data[`weight-${i}`])/100;
+            pr += Number(data[`protein-${i}`])*Number(data[`weight-${i}`])/100;
+        }
+        setRecipe({
+            ckalTotal: ck/Number(data.totalWeight)*100,
+            fat: ft/Number(data.totalWeight)*100,
+            carbs: cr/Number(data.totalWeight)*100,
+            protein: pr/Number(data.totalWeight)*100
+        });
     }
 
     const addNewRow = () => {
@@ -123,7 +136,7 @@ const CountRecipe = () => {
                 <button onClick = {addNewRow}>Add ingredient</button>
                 <button  type="submit" className="submitbutton">Submit</button>
             </form>
-            <p>In your dish there are {recipe.ckalTotal}ckal per 100gram, including {recipe.fat}g of fat, {recipe.carbs}g of carbs and {recipe.protein}g of protein</p>
+            <p>In your dish there are {recipe.ckalTotal.toPrecision(3)}ckal per 100gram, including {recipe.fat.toPrecision(3)}g of fat, {recipe.carbs.toPrecision(3)}g of carbs and {recipe.protein.toPrecision(3)}g of protein</p>
         </div>
     );
 };
