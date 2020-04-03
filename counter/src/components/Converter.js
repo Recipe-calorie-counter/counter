@@ -2,13 +2,16 @@ import React from "react";
 import {
     NavLink
 } from "react-router-dom";
+import { useForm } from 'react-hook-form';
 import styled from "styled-components";
 import FormConverter from './converter/FormConverter';
 
 const StyledDiv = styled.div `
     background-color: #99ffff;
-    width: 30%;
-    height: 100px;
+    width: 1200px;
+    height: 500px;
+    margin 0 auto;
+    padding-top: 20px;
 `
 
 const Converter = () => {
@@ -21,10 +24,9 @@ const Converter = () => {
     return ( 
         <div>
             <StyledDiv>
-                <p className = "hello"> Hello </p> 
+                <NavLink to = "/" > Back </NavLink> 
+                <FormConverter handleSubmit={handleSubmit} />
             </StyledDiv>
-            <NavLink to = "/" > Back </NavLink> 
-            <FormConverter calculate={handleSubmit} />
             
         </div>
     );

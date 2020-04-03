@@ -12,7 +12,7 @@ const CountRecipe = () => {
         carbs: 0,
         protein: 0,
         weight: 0
-    },]);
+    }]);
     const [recipe, setRecipe] = useState({
         ckalTotal: 0,
         fat: 0,
