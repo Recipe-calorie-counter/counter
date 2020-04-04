@@ -5,14 +5,7 @@ import { useForm } from 'react-hook-form'
 const CountRecipe = () => {
 
     const blankRecipe = { name: "", ckal100: 0, fat: 0, carbs: 0, protein: 0, weight: 0 };
-    const [ingredients, setIngredients] = useState([{
-        name: "",
-        ckal100: 0,
-        fat: 0,
-        carbs: 0,
-        protein: 0,
-        weight: 0
-    }]);
+    const [ingredients, setIngredients] = useState([{}]);
     const [recipe, setRecipe] = useState({
         ckalTotal: 0,
         fat: 0,
@@ -20,7 +13,7 @@ const CountRecipe = () => {
         protein: 0
     });
 
-    const { register, handleSubmit, watch, errors, reset } = useForm();
+    const { register, handleSubmit/*, watch, errors, reset */ } = useForm();
 
     const onSubmit = data => {
         console.log(data);
