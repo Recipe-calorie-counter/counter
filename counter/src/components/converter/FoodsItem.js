@@ -10,7 +10,6 @@ const {removeFood} = useContext(Context)
             &nbsp;
             {food.name}
             &nbsp;
-            ckal: {food.ckal}
             <button onClick={removeFood.bind(null, food.id)}>&times;</button>
         </li>         
     )
