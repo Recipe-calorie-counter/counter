@@ -6,7 +6,6 @@ import FoodsList from "./converter/FoodsList";
 import Context from "./converter/Context";
 
 const StyledDiv = styled.div `
-    background-color: #99ffff;
     width: 1200px;
     height: 500px;
     margin 0 auto;
@@ -15,11 +14,7 @@ const StyledDiv = styled.div `
 
 const Converter = () => {
 
-    const [foods, setFoods] = useState([{
-        id: 1,
-        name: "",
-        ckal: ""
-    }]);
+    const [foods, setFoods] = useState([]);
 
     function removeFood(id) {
         setFoods(foods.filter(food => food.id !== id))
@@ -27,12 +22,12 @@ const Converter = () => {
 
     function onCreate(value) {
         setFoods(foods.concat([{
-            id: Date.now(),
+            id: foods.length+1,
+            yourPortionWeigh: value.yourPortionWeigh,
             name: value.foodName,
-            ckal: value.ckal
+            ckal: value.ckal,
+            portionWeight: value.portionWeight
         }]))
-
-        console.log(foods);
     }
 
     return (
@@ -42,7 +37,6 @@ const Converter = () => {
                     <NavLink to = "/" > Back </NavLink>
                     <FormConverter onCreate={onCreate}/>
                     <FoodsList foods={foods}/>
-                    
                 </StyledDiv>
                 
             </div>
