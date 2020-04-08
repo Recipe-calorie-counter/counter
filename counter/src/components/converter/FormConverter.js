@@ -6,20 +6,9 @@ const FormConverter = ({onCreate}) => {
     const [value, setValue] = useState({yourPortionWeight: 0, foodName: '', ckal: 0, portionWeight: 100})
 
     const {handleSubmit/*, watch, errors, reset*/} = useForm();
-    
-    let d=0;
-
-    function calculate() {
-        let a=value.yourPortionWeight;
-        let b=value.ckal;
-        let c=value.portionWeight;
-        return d=(b/c)*a;
-    }
 
     const onClick = data => {
         console.log(value);
-        calculate(value);
-        alert('ckal of your portion: '+d);
         onCreate(value);
         setValue({yourPortionWeight: 0, foodName: '', ckal: 0, portionWeight: 100});
     }

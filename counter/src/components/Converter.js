@@ -21,12 +21,15 @@ const Converter = () => {
     }
 
     function onCreate(value) {
+
         setFoods(foods.concat([{
             id: foods.length+1,
-            yourPortionWeigh: value.yourPortionWeigh,
+            yourPortionWeight: value.yourPortionWeight,
             name: value.foodName,
-            ckal: value.ckal,
-            portionWeight: value.portionWeight
+            portionCkal: value.ckal,
+            portionWeight: value.portionWeight,
+            ckal100g: (value.ckal/value.portionWeight)*100,
+            yourPortionCkal: value.yourPortionWeight*(value.ckal/value.portionWeight),
         }]))
     }
 
