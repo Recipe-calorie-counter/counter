@@ -3,15 +3,16 @@ import { useForm } from 'react-hook-form';
 
 const FormConverter = ({onCreate}) => {
 
-    const [value, setValue] = useState({yourPortionWeight: 0, foodName: '', ckal: 0, portionWeight: 100})
+    const defaultValue = {yourPortionWeight: 0, foodName: '', ckal: 0, portionWeight: 100};
+
+    const [value, setValue] = useState(defaultValue);
 
     const {handleSubmit/*, watch, errors, reset*/} = useForm();
 
     const onClick = data => {
-        console.log(value);
         onCreate(value);
-        setValue({yourPortionWeight: 0, foodName: '', ckal: 0, portionWeight: 100});
-    }
+        setValue(defaultValue);
+    };
 
     return (            
             <form onSubmit={handleSubmit(onClick)}>

@@ -21,7 +21,6 @@ const Converter = () => {
     }
 
     function onCreate(value) {
-
         setFoods(foods.concat([{
             id: foods.length+1,
             yourPortionWeight: value.yourPortionWeight,
@@ -33,13 +32,30 @@ const Converter = () => {
         }]))
     }
 
+    function change(changevalue) {
+        setFoods(
+            foods.map(food => {
+            if (food.id === changevalue.id) {
+                food.yourPortionWeight = changevalue.yourPortionWeight;
+                food.name = changevalue.foodName;
+                food.portionCkal = changevalue.ckal;
+                food.portionWeight = changevalue.portionWeight;
+                food.ckal100g = (changevalue.ckal/changevalue.portionWeight)*100;
+                food.yourPortionCkal = changevalue.yourPortionWeight*(changevalue.ckal/changevalue.portionWeight);
+            }
+            return food
+            })
+        )
+    }
+        
+
     return (
         <Context.Provider value={{removeFood}}>
             <div>
                 <StyledDiv>
                     <NavLink to = "/" > Back </NavLink>
                     <FormConverter onCreate={onCreate}/>
-                    <FoodsList foods={foods}/>
+                    <FoodsList foods={foods} change={change}/>
                 </StyledDiv>
                 
             </div>
