@@ -1,13 +1,13 @@
 import React , {useContext} from "react";
 import { useState } from "react";
 import Context from "./Context";
-//import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 function FoodsItem({food, index, onChange}) {
 
 const {removeFood} = useContext(Context);
 
-//const {handleSubmit} = useForm();
+const {handleSubmit} = useForm();
 
 const [editing, setEditing] = useState(false);
 
@@ -15,7 +15,10 @@ const [changeValue, setChangeValue] = useState({
     id: food.id,
     yourPortionWeight: food.yourPortionWeight,
     foodName: food.name, 
-    ckal: food.portionCkal, 
+    portionFat: food.portionFat,
+    portionCrabs: food.portionCrabs,
+    portionProtein: food.portionProtein,
+    portionCkal: food.portionCkal, 
     portionWeight: food.portionWeight,
 });
 
@@ -24,7 +27,7 @@ const editValue = changeValue => {
     setChangeValue(changeValue);
   };
 
-const onClick = data => {
+const onClick = () => {
     setEditing(false);
     onChange(changeValue);
 };
@@ -34,14 +37,20 @@ const onClick = data => {
             &nbsp;
             {food.name}
             &nbsp;
-            Your portion ckal: {food.yourPortionCkal}
+            Your portion fat: {food.yourPortionFat.toFixed(1)}
+            &nbsp;
+            Your portion crabs: {food.yourPortionCrabs.toFixed(1)}
+            &nbsp;
+            Your portion protein: {food.yourPortionProtein.toFixed(1)}
+            &nbsp;
+            Your portion ckal: {Math.round(food.yourPortionCkal)}
             &nbsp;
             <button onClick={() => editValue(changeValue)}>edit</button>
             <button onClick={removeFood.bind(null, food.id)}>&times;</button>
 
             {editing && (
                         
-                <form onSubmit={onClick}>
+                <form onSubmit={handleSubmit(onClick)}>
 
                     <label> Your portion weight
                     <input name="yourPortionWeight" type="number" value={changeValue.yourPortionWeight}
@@ -51,9 +60,21 @@ const onClick = data => {
                     <input name="foodName" type="text" 
                     value={changeValue.foodName} onChange = {e => setChangeValue({...changeValue, foodName: e.target.value})}/>
                     </label>
+                    <label> Fat
+                    <input name="portionFat" type="text" 
+                    value={changeValue.portionFat} onChange = {e => setChangeValue({...changeValue, portionFat: e.target.value})}/>
+                    </label>
+                    <label> Crabs
+                    <input name="portionCrabs" type="text" 
+                    value={changeValue.portionCrabs} onChange = {e => setChangeValue({...changeValue, portionCrabs: e.target.value})}/>
+                    </label>
+                    <label> Protein
+                    <input name="portionProtein" type="text"
+                     value={changeValue.portionProtein} onChange = {e => setChangeValue({...changeValue, portionProtein: e.target.value})}/>
+                    </label>
                     <label> ckal
-                    <input name="ckal" type="number" 
-                    value={changeValue.ckal} onChange = {e => setChangeValue({...changeValue, ckal: e.target.value})}/>
+                    <input name="portionCkal" type="number" 
+                    value={changeValue.portionCkal} onChange = {e => setChangeValue({...changeValue, portionCkal: e.target.value})}/>
                     </label>
                     <label> per
                     <input name="portionWeight" type="number" 
