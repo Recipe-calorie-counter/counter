@@ -4,6 +4,7 @@ import styled from "styled-components";
 import FormConverter from './converter/FormConverter';
 import FoodsList from "./converter/FoodsList";
 import Context from "./converter/Context";
+import Total from "./converter/Total";
 
 const StyledDiv = styled.div `
     width: 1200px;
@@ -47,8 +48,11 @@ const Converter = () => {
             if (food.id === changeValue.id) {
                 food.yourPortionWeight = changeValue.yourPortionWeight;
                 food.name = changeValue.foodName;
-                food.portionCkal = changeValue.portionCkal;
+                food.portionFat = changeValue.portionFat;
                 food.portionWeight = changeValue.portionWeight;
+                food.portionCrabs = +changeValue.portionCrabs;
+                food.portionProtein = +changeValue.portionProtein;
+                food.portionCkal = +changeValue.portionCkal;
                 food.fat100g = (+changeValue.portionFat/changeValue.portionWeight)*100;
                 food.yourPortionFat= changeValue.yourPortionWeight*(+changeValue.portionFat/changeValue.portionWeight);
                 food.crabs100g= (+changeValue.portionCrabs/changeValue.portionWeight)*100;
@@ -71,6 +75,7 @@ const Converter = () => {
                     <NavLink to = "/" > Back </NavLink>
                     <FormConverter onCreate={onCreate}/>
                     <FoodsList foods={foods} change={change}/>
+                    <Total foods={foods}/>
                 </StyledDiv>
                 
             </div>
