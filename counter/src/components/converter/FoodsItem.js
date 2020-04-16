@@ -15,9 +15,9 @@ const [changeValue, setChangeValue] = useState({
     id: food.id,
     yourPortionWeight: food.yourPortionWeight,
     foodName: food.name, 
-    portionFat: food.portionFat,
-    portionCrabs: food.portionCrabs,
-    portionProtein: food.portionProtein,
+    portionFat: String(food.portionFat),
+    portionCrabs: String(food.portionCrabs),
+    portionProtein: String(food.portionProtein),
     portionCkal: food.portionCkal, 
     portionWeight: food.portionWeight,
 });
@@ -27,7 +27,16 @@ const editValue = changeValue => {
     setChangeValue(changeValue);
   };
 
+function substituting(valueChange) {
+    valueChange = valueChange.replace(",", ".");
+    valueChange = +valueChange;
+        return valueChange;
+}
+
 const onClick = () => {
+    changeValue.portionFat = substituting(changeValue.portionFat);
+    changeValue.portionCrabs = substituting(changeValue.portionCrabs);
+    changeValue.portionProtein = substituting(changeValue.portionProtein);
     setEditing(false);
     onChange(changeValue);
 };
@@ -61,15 +70,15 @@ const onClick = () => {
                     value={changeValue.foodName} onChange = {e => setChangeValue({...changeValue, foodName: e.target.value})}/>
                     </label>
                     <label> Fat
-                    <input name="portionFat" type="text" 
+                    <input name="portionFat" type="text" pattern="^(?:\d+(?:[.,]\d+)?)$"
                     value={changeValue.portionFat} onChange = {e => setChangeValue({...changeValue, portionFat: e.target.value})}/>
                     </label>
                     <label> Crabs
-                    <input name="portionCrabs" type="text" 
+                    <input name="portionCrabs" type="text" pattern="^(?:\d+(?:[.,]\d+)?)$"
                     value={changeValue.portionCrabs} onChange = {e => setChangeValue({...changeValue, portionCrabs: e.target.value})}/>
                     </label>
                     <label> Protein
-                    <input name="portionProtein" type="text"
+                    <input name="portionProtein" type="text" pattern="^(?:\d+(?:[.,]\d+)?)$"
                      value={changeValue.portionProtein} onChange = {e => setChangeValue({...changeValue, portionProtein: e.target.value})}/>
                     </label>
                     <label> ckal
