@@ -1,5 +1,4 @@
-import React ,{ useState } from "react";
-//import { useForm } from 'react-hook-form';
+import React from "react";
 import CommonForm from "./CommonForm";
 
 const FormConverter = ({onCreate}) => {
@@ -13,10 +12,12 @@ const FormConverter = ({onCreate}) => {
         portionCkal: 0,
         portionWeight: 100};
 
+    const onClick = () => {};
+
     return (
-        <CommonForm defaultValue={defaultValue} onClick={onCreate}/>
+        <CommonForm defaultValue={defaultValue} onClick={onClick} onChange={onCreate}/>
     )
-    
+
 };
 
 export default FormConverter;

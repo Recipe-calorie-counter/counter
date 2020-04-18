@@ -1,7 +1,7 @@
 import React ,{ useState } from "react";
 import { useForm } from 'react-hook-form';
 
-const CommonForm = ({defaultValue, onClick}) => {
+const CommonForm = ({defaultValue, onClick, onChange}) => {
 
     const [value, setValue] = useState(defaultValue);
 
@@ -24,7 +24,8 @@ const CommonForm = ({defaultValue, onClick}) => {
         value.portionFat = substitute(value.portionFat);
         value.portionCrabs = substitute(value.portionCrabs);
         value.portionProtein = substitute(value.portionProtein);
-        onClick(value);
+        onClick();
+        onChange(value);
         setValue(defaultValue);
     };
 
@@ -59,7 +60,7 @@ const CommonForm = ({defaultValue, onClick}) => {
             value={value.portionWeight} onChange = {handleChange}/>
             g
             </label>
-            <button type="submit">Add in my lunch</button>
+            <button type="submit"><p>Add in my lunch</p><p>Save</p></button>
             
         </form> 
     );

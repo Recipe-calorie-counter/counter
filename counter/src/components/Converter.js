@@ -50,25 +50,25 @@ const Converter = () => {
         }]))
     }
 
-    function change(changeValue) {
+    function change(value) {
         setFoods(
             foods.map(food => {
-            if (food.id === changeValue.id) {
-                food.yourPortionWeight = changeValue.yourPortionWeight;
-                food.name = changeValue.foodName;
-                food.portionFat = changeValue.portionFat;
-                food.portionCrabs = changeValue.portionCrabs;
-                food.portionProtein = changeValue.portionProtein;
-                food.portionCkal = changeValue.portionCkal;                
-                food.portionWeight = changeValue.portionWeight;
-                food.fat100g = per100g(changeValue.portionFat, changeValue);
-                food.yourPortionFat= yourPortion(changeValue.portionFat, changeValue);
-                food.crabs100g= per100g(changeValue.portionCrabs, changeValue);
-                food.yourPortionCrabs= yourPortion(changeValue.portionCrabs, changeValue);
-                food.protein100g= per100g(changeValue.portionProtein, changeValue);
-                food.yourPortionProtein= yourPortion(changeValue.portionProtein, changeValue);
-                food.ckal100g = per100g(changeValue.portionCkal, changeValue);
-                food.yourPortionCkal = yourPortion(changeValue.portionCkal, changeValue);
+            if (food.id === value.id) {
+                food.yourPortionWeight = value.yourPortionWeight;
+                food.name = value.foodName;
+                food.portionFat = value.portionFat;
+                food.portionCrabs = value.portionCrabs;
+                food.portionProtein = value.portionProtein;
+                food.portionCkal = value.portionCkal;                
+                food.portionWeight = value.portionWeight;
+                food.fat100g = per100g(value.portionFat, value);
+                food.yourPortionFat= yourPortion(value.portionFat, value);
+                food.crabs100g= per100g(value.portionCrabs, value);
+                food.yourPortionCrabs= yourPortion(value.portionCrabs, value);
+                food.protein100g= per100g(value.portionProtein, value);
+                food.yourPortionProtein= yourPortion(value.portionProtein, value);
+                food.ckal100g = per100g(value.portionCkal, value);
+                food.yourPortionCkal = yourPortion(value.portionCkal, value);
             }
             return food
             })
