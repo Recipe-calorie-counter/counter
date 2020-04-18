@@ -61,7 +61,7 @@ const onClick = () => {
                         
                 <form onSubmit={handleSubmit(onClick)}>
 
-                    <label> Your portion weight
+                    <label> Your dish weight, grams
                     <input name="yourPortionWeight" type="number" value={changeValue.yourPortionWeight}
                     onChange = {e => setChangeValue({...changeValue, yourPortionWeight: e.target.value})}/>
                     </label>

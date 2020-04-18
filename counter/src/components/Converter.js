@@ -7,7 +7,7 @@ import Context from "./converter/Context";
 import Total from "./converter/Total";
 
 const StyledDiv = styled.div `
-    width: 1200px;
+    width: 1230px;
     margin 0 auto;
     padding-top: 20px;
 `

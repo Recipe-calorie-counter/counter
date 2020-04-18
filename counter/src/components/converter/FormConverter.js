@@ -16,6 +16,13 @@ const FormConverter = ({onCreate}) => {
 
     const {handleSubmit/*, watch, errors, reset*/} = useForm();
 
+    const handleChange = e => {
+        setValue({
+            ...value,
+            [e.target.name]: e.target.value
+        });
+    };
+
     function substitute(substituteValue) {
         substituteValue = substituteValue.replace(",", ".");
         substituteValue = +substituteValue;
@@ -30,37 +37,35 @@ const FormConverter = ({onCreate}) => {
         setValue(defaultValue);
     };
 
-    //\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}  ^(?:\d+(?:\.\d+)?)$
-
     return (            
             <form onSubmit={handleSubmit(onClick)}>
-                <label> Your portion weight
-                <input name="yourPortionWeight" type="number" 
-                value={value.yourPortionWeight} onChange = {e => setValue({...value, yourPortionWeight: e.target.value})}/>
+                <label htmlFor="yourPortionWeight"> Your dish weight, grams
+                <input name="yourPortionWeight" type="number" id="yourPortionWeight"
+                value={value.yourPortionWeight} onChange = {handleChange}/>
                 </label>
-                <label> food
-                <input name="foodName" type="text" 
-                value={value.foodName} onChange = {e => setValue({...value, foodName: e.target.value})}/>
+                <label htmlFor="foodName"> food
+                <input name="foodName" type="text" id="foodName"
+                value={value.foodName} onChange = {handleChange}/>
                 </label>
-                <label> Fat
-                <input name="portionFat"  type="text" pattern="^(?:\d+(?:[.,]\d+)?)$"
-                value={value.portionFat} onChange = {e => setValue({...value, portionFat: e.target.value})}/>
+                <label htmlFor="portionFat"> Fat
+                <input name="portionFat"  type="text" id="portionFat" pattern="^(?:\d+(?:[.,]\d+)?)$"
+                value={value.portionFat} onChange = {handleChange}/>
                 </label>
-                <label> Crabs
-                <input name="portionCrabs"  type="text" pattern="^(?:\d+(?:[.,]\d+)?)$"
-                value={value.portionCrabs} onChange = {e => setValue({...value, portionCrabs: e.target.value})}/>
+                <label htmlFor="portionCrabs"> Crabs
+                <input name="portionCrabs"  type="text" id="portionCrabs" pattern="^(?:\d+(?:[.,]\d+)?)$"
+                value={value.portionCrabs} onChange = {handleChange}/>
                 </label>
-                <label> Protein
-                <input name="portionProtein"  type="text" pattern="^(?:\d+(?:[.,]\d+)?)$"
-                value={value.portionProtein} onChange = {e => setValue({...value, portionProtein: e.target.value})}/>
+                <label htmlFor="portionProtein"> Protein
+                <input name="portionProtein"  type="text" id="portionProtein" pattern="^(?:\d+(?:[.,]\d+)?)$"
+                value={value.portionProtein} onChange = {handleChange}/>
                 </label>
-                <label> ckal
-                <input name="portionCkal" type="number" 
-                value={value.portionCkal} onChange = {e => setValue({...value, portionCkal: e.target.value})}/>
+                <label htmlFor="portionCkal"> ckal
+                <input name="portionCkal" type="number" id="portionCkal"
+                value={value.portionCkal} onChange = {handleChange}/>
                 </label>
-                <label> per
-                <input name="portionWeight" type="number" 
-                value={value.portionWeight} onChange = {e => setValue({...value, portionWeight: e.target.value})}/>
+                <label htmlFor="portionWeight"> per
+                <input name="portionWeight" type="number" id="portionWeight"
+                value={value.portionWeight} onChange = {handleChange}/>
                 g
                 </label>
                 <button type="submit">Add in my lunch</button>
