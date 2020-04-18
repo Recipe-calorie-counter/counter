@@ -24,8 +24,8 @@ const Converter = () => {
         let portion = (yourPortionValue/value.portionWeight)*value.yourPortionWeight;
         return portion;
     }
-    function per100g(PortionValue, values) {
-        let on100g = (PortionValue/values.portionWeight)*100;
+    function per100g(portionValue, values) {
+        let on100g = (portionValue/values.portionWeight)*100;
         return on100g;
     }
 
