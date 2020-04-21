@@ -11,8 +11,27 @@ const CountRecipe = () => {
         carbs: 0,
         protein: 0
     });
-    const handleSubmit = e => {
-        e.preventDefault();
+
+    const { register, handleSubmit/*, watch, errors, reset */ } = useForm();
+
+    const onSubmit = data => {
+        var ol = Object.keys(ingredients);
+        let ck = 0;
+        let ft = 0;
+        let cr = 0;
+        let pr = 0;
+        for (let i=0; i< ol.length; i++) {
+            ck += Number(data[`ckal100-${i}`])*Number(data[`weight-${i}`])/100;
+            ft += Number(data[`fat-${i}`])*Number(data[`weight-${i}`])/100;
+            cr += Number(data[`carbs-${i}`])*Number(data[`weight-${i}`])/100;
+            pr += Number(data[`protein-${i}`])*Number(data[`weight-${i}`])/100;
+        }
+        setRecipe({
+            ckalTotal: ck/Number(data.totalWeight)*100,
+            fat: ft/Number(data.totalWeight)*100,
+            carbs: cr/Number(data.totalWeight)*100,
+            protein: pr/Number(data.totalWeight)*100
+        });
     }
 
     return (
